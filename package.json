@@ -8,7 +8,8 @@
     "rollup": "rollup --config",
     "deploy": "npm run rollup & npm publish",
     "check": "tsc --noEmit src/index.ts",
-    "build": "tsup  src/index.ts"
+    "build": "tsup  src/index.ts",
+    "prepublish": "npm run build"
   },
   "repository": {
     "type": "git",
