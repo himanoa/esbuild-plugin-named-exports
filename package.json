@@ -5,10 +5,9 @@
   "main": "./dist/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "rollup": "rollup --config",
+    "rollup": "rollup --config rollup.config.js",
     "deploy": "npm run rollup & npm publish",
     "check": "tsc --noEmit src/index.ts",
-    "build": "tsup  src/index.ts",
     "prepublish": "npm run build"
   },
   "repository": {
@@ -30,14 +29,16 @@
   "dependencies": {
     "cjs-module-lexer": "^1.2.1",
     "enhanced-resolve": "^5.16.0",
+    "esbuild": "0.20.2",
     "rollup": "^2.48.0",
-    "util": "^0.12.3",
-    "esbuild": "0.20.2"
+    "util": "^0.12.3"
   },
   "devDependencies": {
     "@rollup/plugin-terser": "0.4.4",
+    "@rollup/plugin-typescript": "11.1.6",
     "@types/node": "20.12.7",
-    "tsup": "8.0.2",
+    "rollup-plugin-dts": "6.1.0",
+    "tslib": "2.6.2",
     "typescript": "5.4.5"
   }
 }
