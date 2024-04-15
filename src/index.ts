@@ -1,4 +1,5 @@
 import {promisify} from 'util'
+import * as esbuild from 'esbuild'
 import * as enhancedResolve from 'enhanced-resolve'
 import * as moduleLexer from 'cjs-module-lexer'
 import * as fs from 'fs'
@@ -10,21 +11,27 @@ const resolve = promisify(
 )
 let lexerInitialized = false
 
-async function getExports(modulePath) {
+async function getExports(modulePath: string) {
     if (!lexerInitialized) {
       await moduleLexer.init()
       lexerInitialized = true
     }
     try {
       const exports = []
-      const paths = []
-      paths.push(await resolve(process.cwd(), modulePath))
+      const paths: string[] = []
+      paths.push(await resolve(process.cwd(), modulePath) as string)
       while (paths.length > 0) {
         const currentPath = paths.pop()
-        const results = moduleLexer.parse(await fs.readFileSync(currentPath, 'utf8'))
+        if(currentPath === undefined) {
+          return
+        }
+        const results = moduleLexer.parse(fs.readFileSync(currentPath, 'utf8'))
         exports.push(...results.exports)
         for (const reexport of results.reexports) {
-          paths.push(await resolve(path.dirname(currentPath), reexport))
+          const resolvedPath = await resolve(path.dirname(currentPath), reexport)
+          if(typeof resolvedPath == 'string') {
+            paths.push(resolvedPath)
+          }
         }
       }
       /**
@@ -39,7 +46,7 @@ async function getExports(modulePath) {
       return 'default'
     }
 }
-const cjs_to_esm_plugin = {
+const cjs_to_esm_plugin: esbuild.Plugin = {
     name: 'cjs-to-esm',
     setup(build) {
       build.onResolve({ filter: /.*/ }, args => {

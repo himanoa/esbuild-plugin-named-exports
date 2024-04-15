@@ -21,6 +21,7 @@ node_modules/
 *.tsbuildinfo
 .eslintcache
 .sonarlint
+public/
 
 coverage/
 release/
