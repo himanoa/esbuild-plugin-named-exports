@@ -1,14 +1,15 @@
 import {promisify} from 'util'
-import enhancedResolve from 'enhanced-resolve'
+import * as enhancedResolve from 'enhanced-resolve'
 import * as moduleLexer from 'cjs-module-lexer'
-import fs from 'fs'
-import path from 'path'
+import * as fs from 'fs'
+import * as path from 'path'
 const resolve = promisify(
     enhancedResolve.create({
       mainFields: ['browser', 'module', 'main']
     })
 )
 let lexerInitialized = false
+
 async function getExports(modulePath) {
     if (!lexerInitialized) {
       await moduleLexer.init()

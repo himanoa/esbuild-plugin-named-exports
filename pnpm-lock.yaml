@@ -9,7 +9,7 @@ dependencies:
     specifier: ^1.2.1
     version: 1.2.3
   enhanced-resolve:
-    specifier: ^5.8.2
+    specifier: ^5.16.0
     version: 5.16.0
   rollup:
     specifier: ^2.48.0
@@ -22,6 +22,9 @@ dependencies:
     version: 0.12.5
 
 devDependencies:
+  '@types/node':
+    specifier: 20.12.7
+    version: 20.12.7
   typescript:
     specifier: 5.4.5
     version: 5.4.5
@@ -92,7 +95,6 @@ packages:
     resolution: {integrity: sha512-wq0cICSkRLVaf3UGLMGItu/PtdY7oaXaI/RVU+xliKVOtRna3PRY57ZDfztpDL0n11vfymMUnXv8QwYCO7L1wg==}
     dependencies:
       undici-types: 5.26.5
-    dev: false
 
   /acorn@8.11.3:
     resolution: {integrity: sha512-Y9rRfJG5jcKOE0CLisYbojUjIrIEE7AGMzA/Sm4BslANhbS+cDMpgBdcPT91oJ7OuJ9hYJBx59RjbhxVnrF8Xg==}
@@ -425,7 +427,6 @@ packages:
 
   /undici-types@5.26.5:
     resolution: {integrity: sha512-JlCMO+ehdEIKqlFxk6IfVoAUVmgz7cU7zD/h9XZ0qzeosSHmUJVOzSQvvYSYWXkFXC+IfLKSIffhv0sVZup6pA==}
-    dev: false
 
   /util@0.12.5:
     resolution: {integrity: sha512-kZf/K6hEIrWHI6XqOFUiiMa+79wE/D8Q+NCNAWclkyg3b4d2k7s0QGepNjiABc+aR3N1PAyHL7p6UcLY6LmrnA==}

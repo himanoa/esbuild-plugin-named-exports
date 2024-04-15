@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "rollup": "rollup --config",
-    "deploy": "npm run rollup & npm publish"
+    "deploy": "npm run rollup & npm publish",
+    "check": "tsc --noEmit src/index.ts"
   },
   "repository": {
     "type": "git",
@@ -26,12 +27,13 @@
   "homepage": "https://github.com/forthealllight/esbuild-plugin-named-exports#readme",
   "dependencies": {
     "cjs-module-lexer": "^1.2.1",
-    "enhanced-resolve": "^5.8.2",
+    "enhanced-resolve": "^5.16.0",
     "rollup": "^2.48.0",
     "rollup-plugin-terser": "^7.0.2",
     "util": "^0.12.3"
   },
   "devDependencies": {
+    "@types/node": "20.12.7",
     "typescript": "5.4.5"
   }
 }
